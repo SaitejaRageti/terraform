@@ -59,3 +59,13 @@ variable "instances" {
     type = list(string)
     default = ["mongodb","frontend","cart","catalogue"]
 }
+
+variable "zone_id" {
+    type = string
+    description = "My hosted zone id"
+    default = "Z0536203ZPIYPJY2Y2R6"
+}
+
+variable "domain_name" {
+    default = "rageti.site"
+}
