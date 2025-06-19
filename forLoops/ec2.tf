@@ -1,11 +1,12 @@
 resource "aws_instance" "roboshop" {
-  for_each  = var.instances
+  #for_each  = var.instances
+  for_each               = toset(var.instances)
   ami                    = var.ami_id
-  instance_type          = each.value
+  instance_type          = var.environment == "dev" ? "t3.micro" : "t2.small"
   vpc_security_group_ids = [aws_security_group.allow_all.id]
 
   tags = {
-     Name = each.key
+    Name = each.key
   }
 }
 

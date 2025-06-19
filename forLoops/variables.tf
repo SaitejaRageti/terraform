@@ -12,7 +12,7 @@ variable "instance_type" {
 variable "tags_name" {
   type = map(string)
   default = {
-    Name = "roboshop"
+    Name    = "roboshop"
     purpose = "Variables_demo"
   }
 }
@@ -56,21 +56,22 @@ variable "environment" {
 }
 
 variable "instances" {
-    
-    default = {
+
+  /* default = {
       mongodb = "t2.small"
       frontend = "t3.micro"
       cart = "t3.micro"
       catalogue = "t3.micro"
-    }
+    } */
+  default = ["mongodb", "frontend", "Cart", "catalogue"]
 }
 
 variable "zone_id" {
-    type = string
-    description = "My hosted zone id"
-    default = "Z0536203ZPIYPJY2Y2R6"
+  type        = string
+  description = "My hosted zone id"
+  default     = "Z0536203ZPIYPJY2Y2R6"
 }
 
 variable "domain_name" {
-    default = "rageti.site"
+  default = "rageti.site"
 }
