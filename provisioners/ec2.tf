@@ -8,6 +8,11 @@ resource "aws_instance" "roboshop" {
     command = "echo ${self.private_ip} >> private_ips.txt" 
   }
 
+    provisioner "local-exec" {
+    command = "${self.private_ip} > inventory"  ##this command will fail as i havent added echo, so purposefully placed this condition.Ignores errors
+    on_failure = continue #ignoring errors
+  }
+
   provisioner "local-exec" {
     command = "echo 'instances destroyed' > private_ips.txt"
     when = destroy
